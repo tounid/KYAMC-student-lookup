@@ -27,6 +27,17 @@ jobs:
         with:
           gradle-version: '8.7'
 
+      - name: Prepare Android source folders
+        run: |
+          mkdir -p app/src/main/java/com/kyamc/studentlookup
+          mkdir -p app/src/main/assets
+          mkdir -p app/src/main/res/values
+
+          cp MainActivity.java app/src/main/java/com/kyamc/studentlookup/MainActivity.java
+          cp AndroidManifest.xml app/src/main/AndroidManifest.xml
+          cp index.html app/src/main/assets/index.html
+          cp styles.xml app/src/main/res/values/styles.xml
+
       - name: Build APK
         run: gradle assembleDebug --stacktrace
 
